@@ -16,6 +16,8 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React with Me
+          Learnt React with Us
+          New line
         </a>
       </header>
     </div>
