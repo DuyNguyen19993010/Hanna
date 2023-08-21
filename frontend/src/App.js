@@ -15,8 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learnt React with Us
-          New line
+          Side-branch new implementation
         </a>
       </header>
     </div>
