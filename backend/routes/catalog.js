@@ -1,5 +1,9 @@
 const dotenv = require('dotenv');
 
+const fs = require('fs');
+
+const path = require('node:path');
+
 const express = require('express');
 
 const route = express.Router();
@@ -11,6 +15,7 @@ const fileHandler = require('../fileHandler/utilities/fileHandler');
 // database client
 
 const dbClient = require('../database/db');
+const { join } = require('path');
 
 try{
 
@@ -88,13 +93,13 @@ route.get(get_multi_item_uri, async (req,res)=>{
             
                 if(!err){
             
-                    resolve( res.rows );
+                    resolve( res );
             
                 }
                 
                 else{
             
-                    reject()
+                    reject(res)
                 
                 }            
             })
@@ -102,7 +107,16 @@ route.get(get_multi_item_uri, async (req,res)=>{
         
         // Send item list to client
         
-        res.status(200).send(query);
+        if(query.rowCount != 0){
+
+            res.send(query.rows);
+
+        }
+        else{
+
+            res.status(410).send(false)
+
+        }
 
     }
     catch(err){
@@ -124,19 +138,24 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
     
     try{
         
-        // TODO: Authorize user
-
         // Insert query
+
+        const dest = req.file.destination;
+        
+        const fname = req.file.filename;
+        
+        const fpath = path.join(dest,fname);
 
         // TODO: Parse image to byte stream 
 
         let queryRes = await new Promise((resolve, reject) => {
             
-            let qstring = `INSERT INTO catalog (name,minquan,price) 
-                                        VALUES ('
-                                        ${req.body.name}',
+            let qstring = `INSERT INTO catalog (name,minquan,price,img) 
+                                        VALUES (
+                                        '${req.body.name}',
                                         ${req.body.minQuan},
-                                        ${req.body.price}) 
+                                        ${req.body.price},
+                                        '${fpath}') 
                                         RETURNING *`
 
             dbClient.query(qstring,(err,res)=>{
@@ -148,14 +167,14 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
                 }
                 else{
 
-                    reject([])
+                    reject(err);
 
                 }
             })
         })
 
         // Send new returned item to the client
-
+        
         res.send(queryRes);
     
     }
@@ -171,5 +190,62 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
 
 // update an item from catalog
 // METHOD: PUT URI: /item/item_id HTTP/3
+const delete_item_uri = '/items/:item_id';
+
+route.delete(delete_item_uri, async (req,res)=>{
+    try{
+
+        let queryRes = await new Promise((resolve, reject)=>{
+
+            const qstring = `DELETE FROM catalog WHERE id='${req.params.item_id}'  RETURNING *`
+    
+            dbClient.query(qstring,(err,res)=>{
+    
+                if(!err){
+    
+                    resolve(res)
+    
+                }
+                else{
+    
+                    reject(err)
+                
+                }
+            });
+    
+        })
+
+        if(queryRes.rowCount != 0){
+
+            // Delete file from server
+            
+            let filePath = queryRes.rows[0].img;
+
+            try{
+
+                fs.unlinkSync(filePath);
+
+            }
+            catch(err){
+
+                res.status(410).send(false);
+
+            }
+            res.send(queryRes.rows[0]);
+
+        }
+        else{
+
+            res.status(410).send(false);
+
+        }
+        
+    }
+    catch(err){
+
+        res.send(err)
+    }
+
+})
 
 module.exports = route;
