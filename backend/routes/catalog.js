@@ -31,60 +31,17 @@ catch(err){
 
 // catalog API:
 
-// check if all parameter exists
-
-function paramChecker(param_list, req_params){
-
-    return new Promise((resolve,reject)=>{
-        
-        // Check number of params in request
-
-        const lengthEqual = (param_list.length == req_params.length);
-        
-        // Check if required params exist;
-
-        const param_list_keys = Object.keys(param_list);
-        
-        const req_params_keys = Object.keys(req_params);
-
-        let all_param_included = true;
-
-        for(let i = 0; i < param_list_keys.length; i++){
-
-            const param_exist = req_params_keys.includes(param_list_keys[i]);
-
-            if(!param_exist){
-                
-                all_param_included = false;
-                
-                break;
-            
-            }
-        
-        }
-        const res = lengthEqual && all_param_included; 
-        
-        res? (resolve(true)):(reject('Bad request'));
-    });
-
-}
-
 // fetch mulitple items from a page in catalog
 // METHOD: GET URI: /items PARAM:?page=page-index HTTP/3 
 
-const get_multi_item_uri = '/items';
-
-const get_multi_item_param = {page:true};
+const get_multi_item_uri = '/items/:page';
 
 route.get(get_multi_item_uri, async (req,res)=>{
     
     try{
-        // Check if params exist
-        
-        let param_check = await paramChecker(get_multi_item_param,req.query);
-    
-        // Postgres query
 
+        // Postgres query
+        
         let query = await new Promise((resolve,reject)=>{
             
             let qstring = 'SELECT * FROM catalog';
@@ -129,10 +86,59 @@ route.get(get_multi_item_uri, async (req,res)=>{
 // fetch an item from catalog
 // METHOD: GET URI: /item/item_id HTTP/3
 
+const get_item_uri = '/item/:item_id';
+
+route.get(get_item_uri, async (req,res)=>{
+    
+    try{
+    
+        // Postgres query
+
+        let query = await new Promise((resolve,reject)=>{
+            
+            let qstring = `SELECT * FROM catalog WHERE id='${req.params.item_id}'`;
+            
+            dbClient.query(qstring,(err,res)=>{
+            
+                if(!err){
+            
+                    resolve( res );
+            
+                }
+                
+                else{
+            
+                    reject(res)
+                
+                }            
+            })
+        })
+        
+        // Send item list to client
+        
+        if(query.rowCount != 0){
+
+            res.send(query.rows);
+
+        }
+        else{
+
+            res.status(410).send(false)
+
+        }
+
+    }
+    catch(err){
+
+        res.status(400).send(err);
+
+    }
+});
+
 // add a new item to catalog
 // METHOD: POST URI: /items HTTP/3
 
-const post_item_uri = '/items_add';
+const post_item_uri = '/item_add';
 
 route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
     
@@ -188,8 +194,6 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
 // remove an item from catalog
 // METHOD: DELETE  URI: /item/item_id HTTP/3
 
-// update an item from catalog
-// METHOD: PUT URI: /item/item_id HTTP/3
 const delete_item_uri = '/items/:item_id';
 
 route.delete(delete_item_uri, async (req,res)=>{
@@ -247,5 +251,8 @@ route.delete(delete_item_uri, async (req,res)=>{
     }
 
 })
+
+// update an item from catalog
+// METHOD: PUT URI: /item/item_id HTTP/3
 
 module.exports = route;
