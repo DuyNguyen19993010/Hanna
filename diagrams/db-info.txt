@@ -1,0 +1,4 @@
+type: mysql
+platform: supabase
+db-name: paracel-bakery-db
+password: paracelbdb99
