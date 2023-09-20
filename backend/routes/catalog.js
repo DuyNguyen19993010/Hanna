@@ -212,7 +212,7 @@ route.delete(delete_item_uri, async (req,res)=>{
                 }
                 else{
     
-                    reject(err)
+                    reject(res)
                 
                 }
             });
