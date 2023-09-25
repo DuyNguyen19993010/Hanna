@@ -35,5 +35,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.68.0"
   }
 }

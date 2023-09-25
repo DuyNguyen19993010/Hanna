@@ -152,8 +152,6 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
         
         const fpath = path.join(dest,fname);
 
-        // TODO: Parse image to byte stream 
-
         let queryRes = await new Promise((resolve, reject) => {
             
             let qstring = `INSERT INTO catalog (name,minquan,price,img) 

@@ -1,0 +1,64 @@
+{ 
+    "tabs":
+    [
+        {
+            "name":"Catalog",
+            "routePrefix":"catalog",
+            "icon":"fa-solid fa-box-archive",
+            "active":false,
+            "options":
+            [
+                {
+                    "name":"All",
+                    "route":"/all"
+                },
+                {
+                    "name":"Featuring",
+                    "route":"/featuring"
+                }
+            ]
+        },
+
+        {
+            "name":"Order",
+            "routePrefix":"orders",
+            "icon":"fa-solid fa-envelope",
+            "active":false,
+            "options":
+            [
+                {
+                    "name":"Active",
+                    "route":""
+                },
+                {
+                    "name":"Delivered",
+                    "route":""
+                },
+                {
+                    "name":"Removed",
+                    "route":""
+                }
+            ]
+        },
+
+        {
+            "name":"Sales",
+            "routePrefix":"sales",
+            "icon":"fa-solid fa-sack-dollar",
+            "active":false,
+            "options":
+            [
+                {
+                    "name":"Dashboard",
+                    "route":""
+                },
+                {
+                    "name":"Item",
+                    "route":""
+                }
+            ]
+        }
+
+    ]
+    
+}

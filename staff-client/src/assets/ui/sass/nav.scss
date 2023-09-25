@@ -1,0 +1,230 @@
+// variables
+
+// layering
+
+$main-div-layer: 1;
+
+$tab-list-layer: 2;
+
+// Icon
+
+$down-arrow-icon: "\f107";
+
+$up-arrow-icon: "\f106";
+
+// Color scheme
+
+$background: rgba(20, 20, 20, 0.637);
+
+$mobile-nav-background:white;
+
+$active-tab: #1684FC;
+
+$primary: #415058;
+
+$secondary: #616f77;
+
+$shadow: rgba(0, 0, 0, 0.925);
+
+// Position
+
+$general-nav-position: absolute;
+
+// Dimension
+
+$mobile-nav-width: 100vw;
+
+$mobile-nav-height: 100vh;
+
+// Tabs layout
+
+$mobile-nav-display: flex;
+
+$mobile-nav-display-dir: column;
+
+$mobile-main-axis-align: flex-start;
+
+$tab-separator-width: 20px;
+
+$secondary-axis-top-offset: 70px;
+
+$main-axis-left-offset: 20px;
+
+$main-axis-right-offset: 20px;
+
+
+// Tab content
+
+$mobile-default-font-size: 18px;
+
+$mobile-header-font-size: 20px;
+
+$movile-header-font-weight: 600;
+
+$mobile-content-separator: 10px;
+
+$mobile-icon-margin-offset-right: 10px;
+
+$mobile-sub-options-padding-offset-left: 20px + $mobile-icon-margin-offset-right;
+
+$mobile-close-btn-pos-right: $mobile-icon-margin-offset-right + 4px;
+
+$mobile-close-btn-pos-top: 10px;
+
+// Main SASS
+
+a:visited{
+
+    color: $primary;
+
+}
+
+a:link{
+
+    color: $primary;
+
+}
+
+#main-nav
+{
+
+    background-color: $background;
+
+    color: $primary;
+
+    width: $mobile-nav-width;
+    
+    height: $mobile-nav-height;
+
+    position: $general-nav-position;
+
+    right: 0;
+
+    box-shadow: 2px 0px 6px $shadow;
+    
+    z-index: $main-div-layer;
+}
+
+#main-ul-wrapper{
+
+    background-color: $mobile-nav-background;
+
+    display: $mobile-nav-display;
+
+    flex-direction: $mobile-nav-display-dir;
+
+    align-items: $mobile-main-axis-align;
+
+    padding-left: $main-axis-left-offset;
+
+    padding-right: $main-axis-right-offset;
+
+    padding-top: $secondary-axis-top-offset;
+
+    float: right;
+
+    width: 60%;
+
+    height: 100%;
+
+    font-size: $mobile-default-font-size;
+
+    overflow-x: hidden;
+
+    position: relative;
+
+    z-index: $tab-list-layer;
+}
+
+
+.tab
+{
+    
+    margin-bottom: $mobile-content-separator;
+
+    width: 100%;
+
+}
+
+.inactive-headers::after{
+    
+    font-family: "Font Awesome 6 Free";
+    
+    font-weight: $movile-header-font-weight;
+
+    font-size: $mobile-header-font-size;
+
+    content: $up-arrow-icon;
+
+    float: right;
+    
+}
+
+.active-headers{
+    
+    color: $active-tab;
+}
+
+.active-headers::after{
+    
+    font-family: "Font Awesome 6 Free";
+    
+    font-weight: $movile-header-font-weight;
+
+    font-size: $mobile-header-font-size;
+
+    content: $down-arrow-icon;
+
+    float: right;
+}
+
+.headers
+{
+
+    font-size: $mobile-header-font-size;
+
+    font-weight: $movile-header-font-weight;
+
+    margin-bottom: $mobile-content-separator;
+
+    cursor: pointer;
+    
+}
+
+.tab-icon{
+    margin-right: $mobile-icon-margin-offset-right;
+}
+
+.options{
+    
+    padding-left: $mobile-sub-options-padding-offset-left;
+
+}
+
+.sub-option
+{
+    
+    margin-bottom: $mobile-content-separator;
+
+}
+
+#nav-close-btn{
+
+    position: absolute;
+
+    top:$mobile-close-btn-pos-top;
+
+    right:$mobile-close-btn-pos-right;
+
+    font-family: "Font Awesome 6 Free";
+
+    font-size: $mobile-header-font-size + 20px;
+
+    cursor: pointer;
+}
+
+#nav-close-btn:hover{
+
+    color: #1684FC;
+
+}
