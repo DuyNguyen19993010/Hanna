@@ -1,5 +1,9 @@
-import "./assets/ui/css/App.css"
-import "./assets/ui/css/Reset.css"
+// Style
+import "./assets/ui/css/app.css"
+
+// Pages
+
+import Catalog from "./pages/Catalog";
 
 // Components
 
@@ -12,7 +16,17 @@ function App() {
     <div id="App">
       
       {/* <Nav/> */}
-    
+
+      {/* Home page */}
+
+      {/* Catalog page */}
+      
+      <Catalog/>
+
+      {/* Order page */}
+
+      {/* Sale page */}
+
     </div>
   );
 

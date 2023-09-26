@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 
 //routes import
 
@@ -18,6 +19,7 @@ dotenv.config({path:`./env/.env.${process.env.NODE_ENV}`})
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(cors({origins: '*'}))
 
 // Routing
 

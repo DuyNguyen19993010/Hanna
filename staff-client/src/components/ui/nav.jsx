@@ -1,5 +1,3 @@
-import "../../assets/ui/css/nav.css"
-
 import { useState } from "react";
 
 const Nav = (props) => {

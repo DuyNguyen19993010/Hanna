@@ -1,75 +1,10 @@
-// variables
+@import "./_variables";
 
 // layering
 
 $main-div-layer: 1;
 
 $tab-list-layer: 2;
-
-// Icon
-
-$down-arrow-icon: "\f107";
-
-$up-arrow-icon: "\f106";
-
-// Color scheme
-
-$background: rgba(20, 20, 20, 0.637);
-
-$mobile-nav-background:white;
-
-$active-tab: #1684FC;
-
-$primary: #415058;
-
-$secondary: #616f77;
-
-$shadow: rgba(0, 0, 0, 0.925);
-
-// Position
-
-$general-nav-position: absolute;
-
-// Dimension
-
-$mobile-nav-width: 100vw;
-
-$mobile-nav-height: 100vh;
-
-// Tabs layout
-
-$mobile-nav-display: flex;
-
-$mobile-nav-display-dir: column;
-
-$mobile-main-axis-align: flex-start;
-
-$tab-separator-width: 20px;
-
-$secondary-axis-top-offset: 70px;
-
-$main-axis-left-offset: 20px;
-
-$main-axis-right-offset: 20px;
-
-
-// Tab content
-
-$mobile-default-font-size: 18px;
-
-$mobile-header-font-size: 20px;
-
-$movile-header-font-weight: 600;
-
-$mobile-content-separator: 10px;
-
-$mobile-icon-margin-offset-right: 10px;
-
-$mobile-sub-options-padding-offset-left: 20px + $mobile-icon-margin-offset-right;
-
-$mobile-close-btn-pos-right: $mobile-icon-margin-offset-right + 4px;
-
-$mobile-close-btn-pos-top: 10px;
 
 // Main SASS
 
@@ -88,7 +23,7 @@ a:link{
 #main-nav
 {
 
-    background-color: $background;
+    background-color: $nav-wrapper-background;
 
     color: $primary;
 

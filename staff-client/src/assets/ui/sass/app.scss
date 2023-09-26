@@ -1,0 +1,32 @@
+// Reset styles
+
+@import "./_base";
+
+// functions and variables
+
+@import "./_variables";
+
+// components
+
+@import "./components/nav";
+
+#App
+{
+    
+    background-color: $main-background-color;
+
+    font-family: $default-font;
+
+    width: $main-width;
+    
+    height: $main-height;
+
+}
+
+#catalog-wrapper{
+
+    width: $main-width;
+
+    height: $main-height;
+
+}

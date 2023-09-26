@@ -37,7 +37,7 @@ catch(err){
 const get_multi_item_uri = '/items/:page';
 
 route.get(get_multi_item_uri, async (req,res)=>{
-    
+
     try{
 
         // Postgres query
@@ -49,13 +49,13 @@ route.get(get_multi_item_uri, async (req,res)=>{
             dbClient.query(qstring,(err,res)=>{
             
                 if(!err){
-            
+
                     resolve( res );
             
                 }
                 
                 else{
-            
+
                     reject(res)
                 
                 }            
@@ -64,16 +64,7 @@ route.get(get_multi_item_uri, async (req,res)=>{
         
         // Send item list to client
         
-        if(query.rowCount != 0){
-
-            res.send(query.rows);
-
-        }
-        else{
-
-            res.status(410).send(false)
-
-        }
+        res.send(query.rows);
 
     }
     catch(err){

@@ -8,10 +8,7 @@ const sass_compiler = require('gulp-sass')(require('sass'));
 
 // SASS to compile
 
-const sass_files = [
-    './assets/ui/sass/App.scss',
-    './assets/ui/sass/nav.scss',
-    './assets/ui/sass/Reset.scss'];
+const sass_files = './assets/ui/sass/*.scss';
 
 // Style builder function to process sass to css
 
@@ -19,7 +16,7 @@ function styleBuilder(){
     
     // PIPELINE: Find the sass files to compile ===> Compile the sass file ===> Put result to destination folder
 
-    return src(sass_files).pipe(sass_compiler()).pipe(dest('./assets/ui/css'))
+    return src(sass_files).pipe(sass_compiler()).pipe(dest('./assets/ui/css'));
 
 }
 
@@ -27,7 +24,7 @@ function styleBuilder(){
 
 function watchTask(){
 
-    watch(sass_files, styleBuilder);
+    watch([sass_files], styleBuilder);
 
 }
 

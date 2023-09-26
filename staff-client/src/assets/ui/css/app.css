@@ -1,3 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url(../../fonts/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: "roboto";
+  src: url(../../fonts/Roboto-Light.ttf);
+}
 a:visited {
   color: #415058;
 }
@@ -42,7 +58,7 @@ a:link {
 .inactive-headers::after {
   font-family: "Font Awesome 6 Free";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 19.8px;
   content: "\f106";
   float: right;
 }
@@ -54,13 +70,13 @@ a:link {
 .active-headers::after {
   font-family: "Font Awesome 6 Free";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 19.8px;
   content: "\f107";
   float: right;
 }
 
 .headers {
-  font-size: 20px;
+  font-size: 19.8px;
   font-weight: 600;
   margin-bottom: 10px;
   cursor: pointer;
@@ -83,10 +99,22 @@ a:link {
   top: 10px;
   right: 14px;
   font-family: "Font Awesome 6 Free";
-  font-size: 40px;
+  font-size: 39.8px;
   cursor: pointer;
 }
 
 #nav-close-btn:hover {
   color: #1684FC;
+}
+
+#App {
+  background-color: #CBCED5;
+  font-family: "roboto";
+  width: 100vw;
+  height: 100vh;
+}
+
+#catalog-wrapper {
+  width: 100vw;
+  height: 100vh;
 }
