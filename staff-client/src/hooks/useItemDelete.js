@@ -1,33 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
-const useItemDelete = (trigger,item_id) => {
-    
-    const [status, setStatus] = useState(false);
+// context
+import { PendingContext } from "../context/PendingContext";
+const useItemDelete = (item_id,callback) => {
     
     const uri = `${process.env.REACT_APP_DELETE_ITEM_PATH}/${item_id}`;
 
-    useEffect(()=>{
+    const [isPending,setPending] = useContext(PendingContext);
 
-        if(trigger){
+    const deleteReq = () => {
+        
+        setPending(true)
+        
+        axios.delete(uri).then((res)=>{
+
+            callback();
             
-            axios.delete(uri).then((res)=>{
+        }).
+        catch((err)=>{
 
-                setStatus(true);
-                
-            }).
-            catch((err)=>{
-    
-                console.log(err);
-    
-            })    
+            window.alert('Delete failed');
 
-        }
+        }).finally(() => {
 
+            setPending(false);
+        
+        })  
 
-    }, [trigger])
+    }
 
-    return {status};
+    return {deleteReq};
 
 }
 

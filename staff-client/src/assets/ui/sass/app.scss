@@ -21,6 +21,34 @@
     
     height: $main-height;
 
+    button{
+
+        padding: map-get($map: $button, $key: padding);
+
+        background-color: map-get($map: $button, $key: background-color);
+
+        color: map-get($map: $button, $key: color);
+
+        border: map-get($map: $button, $key: border);
+
+        border-radius: map-get($map: $button, $key: border-radius);
+
+        font-size: map-get($map: $button, $key: font-size);
+
+    }
+
+    button:active{
+
+        background-color: map-get($map: $button, $key: focused-background-color);
+
+        color: map-get($map: $button, $key: focused-color);
+
+        scale: 1.05;
+
+        transition: 0.2s;
+
+    }
+
 }
 
 #catalog-wrapper{
@@ -30,3 +58,286 @@
     height: $main-height;
 
 }
+
+.tab{
+    z-index: $top-layer;
+}
+
+#loading-wrapper{
+    
+    position: $loading-wrapper-position;
+
+    background-color: $loading-wrapper-background;
+
+    width: $loading-wrapper-width;
+
+    height: $loading-wrapper-height;
+
+    z-index: $top-layer;
+
+    #loading-splash{
+
+        position: $loading-wrapper-position;
+
+        background-color: $loading-wrapper-background;
+
+        width: $loading-wrapper-width;
+
+        height: $loading-wrapper-height;
+
+        z-index: $bottom-layer;
+        
+        display: $center-layout-display;
+
+        flex-direction: $center-layout-mobile-flow-dir;
+
+        justify-content: $center-layout-justify-content;
+
+        align-items: $center-layout-align-item;
+        
+    }
+
+}
+
+#catalog-wrapper{
+
+    #util-bar-wrapper{
+        
+        background-color: $main-tab-background-color;
+
+        width: $main-width;
+
+        height: map-get($map: $util-bar, $key: height);
+
+        display: map-get($map: $util-bar, $key: display);
+
+        flex-direction: map-get($map: $util-bar, $key: flex-direction);
+
+        justify-content: map-get($map: $util-bar, $key: justify-content);
+
+        align-items: map-get($map: $util-bar, $key: align-items);
+
+        padding: map-get($map: $util-bar, $key: padding);
+
+        box-shadow: map-get($map: $util-bar, $key: box-shadow);
+
+        #search-bar{
+
+            height: map-get($map: $searh-bar, $key: height);
+
+            width: map-get($map: $searh-bar, $key: width);
+
+            border: map-get($map: $searh-bar, $key: bord);
+
+            border-radius: map-get($map: $searh-bar, $key: border-radius);
+
+            font-size: map-get($map: $searh-bar, $key: font-size);
+
+            padding: map-get($map: $searh-bar, $key: padding-left);
+
+        }
+
+        #menu-toggle{
+
+            cursor: pointer;
+        
+        }
+
+        #add-item-button::after{
+
+            content: "\2b";
+
+            margin-left: 5px;
+
+            font-size: 20px;
+            
+            font-weight: 600;
+
+        }
+
+    }
+
+    #item-grid{
+
+        display: flex;
+    
+        flex-direction: column;
+        
+        align-items: center;
+    
+        justify-content: start;
+
+        width: 100%;
+
+        padding: 30px 10px 0px 10px ;
+        
+        .item{
+    
+            display: grid;
+            
+            position: relative;
+
+            grid-template-columns: 80% 20%;
+        
+            width: 95%;
+            
+            margin-bottom: 2vh;
+
+            background-color: white;
+
+            border: 1px solid rgb(165, 165, 165);
+
+            .item-util-wrapper{
+
+                display: grid;
+
+                grid-template-rows: 50% 50%;
+
+                border: 1px solid rgb(165, 165, 165);
+
+                padding: 0px 3px 0px 3px;
+
+                .util-btn{
+
+                    height: 50%;
+
+                    align-self: center;
+
+                    justify-self: center;
+
+                    font-size: 12px;
+
+                    font-weight: 600;
+
+                }
+
+                .edit-btn{
+
+                    background-color: $active-tab;
+
+                    border: none;
+
+                }
+
+                .edit-btn:active{
+
+                    background-color: white;
+
+                    color: $active-tab;
+
+                    text-align: center;
+
+                }
+
+                .del-btn{
+
+                    background-color: $error;
+
+                    border: none;
+
+                    text-align: center;
+
+                }
+
+                .del-btn:active{
+
+                    background-color: white;
+
+                    color: $error;
+
+                }
+
+            }
+        
+            .info-wrapper{
+
+                display: grid;
+
+                position: relative;
+
+                grid-template-columns: 35% 65%;
+
+                border: 1px solid rgb(165, 165, 165);
+
+                .item-profile{
+
+                    width: 80%;
+
+                    height: 80%;
+
+                    overflow: hidden;
+
+                    align-self: center;
+
+                    justify-self: center;
+
+                    img{
+                        
+                        width: 100%;
+
+                        height: 100%;
+                    
+                    }
+                }
+
+                .item-info{
+
+                    padding: 5px;
+
+                    display: flex;
+
+                    flex-direction: column;
+
+                    align-items: start;
+
+                    justify-content: space-between;
+
+                    .item-name{
+
+                        font-weight: bolder;
+
+                        font-size: 20px;
+
+                    }
+
+                    .item-minimum, .item-price{
+
+                        font-weight: 300;
+
+                        font-size: 12px;
+ 
+                    }
+
+                    .item-detail-btn{
+
+                        background-color: white;
+
+                        padding: 1px 3px 1px 3px;
+
+                        border: solid 2px $active-tab;
+
+                        color: $active-tab;
+
+                    }
+
+                    .item-detail-btn:active{
+
+                        background-color: $active-tab;
+
+                        padding: 1px 3px 1px 3px;
+
+                        border: solid 2px $active-tab;
+
+                        color: white;
+
+                    }
+                }
+
+            }
+            
+        }
+
+    }
+
+}
+

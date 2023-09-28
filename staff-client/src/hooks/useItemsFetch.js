@@ -1,30 +1,47 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 
+// context
+
+import { PendingContext } from "../context/PendingContext";
 const useItemsFetch = (page) => {
     
     const uri = `${process.env.REACT_APP_ALL_ITEM_PATH}/${page}`;
 
-    const [items, setItem] = useState([]);
+    const [items, setItems] = useState([]);
+    
+    const [isPending,setPending] = useContext(PendingContext)
 
     useEffect(()=>{ 
-        
-        if(page!= null){
 
+        if(page!= null){
+            setPending(true);
             axios.get(uri).then((res)=>{
                     
-                setItem(res.data);
+                setItems(res.data);
             
             }).catch((err)=>{
                 
-                console.log(err);
+                window.alert(err);
 
+            }).finally(()=>{
+
+                setPending(false);
+            
             })
         }
         
     },[page]);
+
+    const setNewItems = (new_set) => {
+
+        setItems(new_set);
+
+    }
+
+
     
-    return {items};
+    return {items,setNewItems};
 }
 
 export default useItemsFetch;

@@ -1,25 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useItemDelete from "../../../hooks/useItemDelete";
+
+// context
+import axios from "axios";
+
+import { ItemContext } from "../context/ItemContext";
+import { PendingContext } from "../../../context/PendingContext";
 
 const DeleteBtn = (props) => {
 
-    const [flag,setFlag] = useState(false);
+    const [item,setItem,items,setNewItems] = useContext(ItemContext); 
 
-    const {status} = useItemDelete(flag, props.item.id);
-
-    useEffect(()=>{
+    const refreshItemList = () => {
         
-        if(status){
+        let cloneList = [...items];
 
-            props.setFlag(true);
-        
-        }
+        cloneList = cloneList.filter((valid_item) => valid_item != props.item);
 
-    },[status])
+        setNewItems(cloneList);
+
+    }
+
+    const {deleteReq} = useItemDelete(props.item.id,refreshItemList);
 
     return (
         
-        <button onClick={()=> setFlag(true)}>X</button> 
+        <button className="del-btn util-btn" onClick={()=> deleteReq()}><i class="fa-regular fa-trash-can" style={{"color": "#ffffff"}}></i> Delete</button>
     
     )
 }

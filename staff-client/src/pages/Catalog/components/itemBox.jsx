@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ItemContext } from "../context/ItemContext";
 
-import useItemFetch from "../../../hooks/useItemFetch";
-
-const ItemBox = (props) => {
-    const {item} =  useItemFetch(props.item_id);
+const ItemBox = () => {
     
+    const [item] = useContext(ItemContext);
+
     return (
 
        <div>
-    
-            {props.item_id}
-            {item != null? (<p>{item.name}</p>):(<></>)}
+            
+            {item != null? (<p>{item.name}-{item.id}</p>):(<></>)}
        
        </div>
     

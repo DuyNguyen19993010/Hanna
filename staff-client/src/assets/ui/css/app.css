@@ -29,7 +29,7 @@ a:link {
   height: 100vh;
   position: absolute;
   right: 0;
-  box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.925);
+  box-shadow: 2px 0px 6px rgba(78, 78, 78, 0.925);
   z-index: 1;
 }
 
@@ -113,8 +113,166 @@ a:link {
   width: 100vw;
   height: 100vh;
 }
+#App button {
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px black;
+  border-radius: 5px;
+  font-size: 13.5px;
+}
+#App button:active {
+  background-color: white;
+  color: black;
+  scale: 1.05;
+  transition: 0.2s;
+}
 
 #catalog-wrapper {
   width: 100vw;
   height: 100vh;
+}
+
+.tab {
+  z-index: 8;
+}
+
+#loading-wrapper {
+  position: fixed;
+  background-color: rgba(20, 20, 20, 0.637);
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
+}
+#loading-wrapper #loading-splash {
+  position: fixed;
+  background-color: rgba(20, 20, 20, 0.637);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#catalog-wrapper #util-bar-wrapper {
+  background-color: white;
+  width: 100vw;
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 5px;
+  box-shadow: 10px 2px 20px rgba(78, 78, 78, 0.925);
+}
+#catalog-wrapper #util-bar-wrapper #search-bar {
+  height: 55%;
+  width: 75%;
+  border: solid black 2px;
+  border-radius: 5px;
+  font-size: 2vh;
+  padding: 4px;
+}
+#catalog-wrapper #util-bar-wrapper #menu-toggle {
+  cursor: pointer;
+}
+#catalog-wrapper #util-bar-wrapper #add-item-button::after {
+  content: "+";
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+#catalog-wrapper #item-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 30px 10px 0px 10px;
+}
+#catalog-wrapper #item-grid .item {
+  display: grid;
+  position: relative;
+  grid-template-columns: 80% 20%;
+  width: 95%;
+  margin-bottom: 2vh;
+  background-color: white;
+  border: 1px solid rgb(165, 165, 165);
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  border: 1px solid rgb(165, 165, 165);
+  padding: 0px 3px 0px 3px;
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper .util-btn {
+  height: 50%;
+  align-self: center;
+  justify-self: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper .edit-btn {
+  background-color: #1684FC;
+  border: none;
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper .edit-btn:active {
+  background-color: white;
+  color: #1684FC;
+  text-align: center;
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper .del-btn {
+  background-color: red;
+  border: none;
+  text-align: center;
+}
+#catalog-wrapper #item-grid .item .item-util-wrapper .del-btn:active {
+  background-color: white;
+  color: red;
+}
+#catalog-wrapper #item-grid .item .info-wrapper {
+  display: grid;
+  position: relative;
+  grid-template-columns: 35% 65%;
+  border: 1px solid rgb(165, 165, 165);
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-profile {
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-profile img {
+  width: 100%;
+  height: 100%;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-info {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-info .item-name {
+  font-weight: bolder;
+  font-size: 20px;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-info .item-minimum, #catalog-wrapper #item-grid .item .info-wrapper .item-info .item-price {
+  font-weight: 300;
+  font-size: 12px;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-info .item-detail-btn {
+  background-color: white;
+  padding: 1px 3px 1px 3px;
+  border: solid 2px #1684FC;
+  color: #1684FC;
+}
+#catalog-wrapper #item-grid .item .info-wrapper .item-info .item-detail-btn:active {
+  background-color: #1684FC;
+  padding: 1px 3px 1px 3px;
+  border: solid 2px #1684FC;
+  color: white;
 }

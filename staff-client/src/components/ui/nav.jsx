@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState,createContext, useEffect } from "react";
 
-const Nav = (props) => {
+// context
+
+import { NavContext } from "../../context/NavContext";
+
+const Nav = ({children}) => {
 
     let tabs_json = require("../../data/tabs-meta.json");
 
     const [tabsJson,setTab] = useState(tabs_json.tabs);
 
-    const [toggle,setToggle] = useState(true);
+    const [toggle,setToggle] = useState(false);
     
     function selectTab(e){
 
@@ -33,66 +37,75 @@ const Nav = (props) => {
     }
 
     return (
-        toggle? (
             
-            <nav onClick={(e)=> closeNav(e)} id = "main-nav">
-                
-                <ul onClick={(e)=> {e.stopPropagation()}} id = "main-ul-wrapper">
+        <div id = "router">
+            
+            {toggle? (
+                <nav onClick={(e)=> closeNav(e)} id = "main-nav">
 
-                <i onClick={(e)=> closeNav(e)} id = "nav-close-btn" className="fa-solid fa-xmark"></i>
-                
-                {
-   
-                    tabsJson.map(( tab, key ) => 
-                        (
-                            <li id = {`${tab.name}-tab`} key = {`${tab.name}-tab`} className = "tab inactive-tab">
+                    <ul onClick={(e)=> {e.stopPropagation()}} id = "main-ul-wrapper">
 
-                                <p onClick={(e) => selectTab(e)} id = {`nav-header-${key}`} key = {key} className = {`${tab.active? ("headers active-headers"):("headers inactive-headers")}`}><i onClick={function(e){e.stopPropagation()}}className={`tab-icon ${tab.icon}`}/>{tab.name}</p>
-                                
-                                {
-                                    
-                                    tab.active?(
+                        <i onClick={(e)=> closeNav(e)} id = "nav-close-btn" className="fa-solid fa-xmark"></i>
+
+                        {
+
+                            tabsJson.map(( tab, key ) => 
+                                (
+                                    <li id = {`${tab.name}-tab`} key = {`${tab.name}-tab`} className = "tab inactive-tab">
+
+                                        <p onClick={(e) => selectTab(e)} id = {`nav-header-${key}`} key = {key} className = {`${tab.active? ("headers active-headers"):("headers inactive-headers")}`}><i onClick={function(e){e.stopPropagation()}}className={`tab-icon ${tab.icon}`}/>{tab.name}</p>
                                         
-                                        <ul id = {`${tab.name}-options`} className="options">
-
-                                            {
+                                        {
                                             
-                                            tab.options.map(( option,o_key ) => 
-                                                (
-                                                    
-                                                    <li key = {o_key} className = 'sub-option inactive-sub-option active-sub-option' id = {`${option.name}-option`}> 
-                                                        
-                                                        <a key = {o_key} href = {`${tab.routePrefix}${option.route}`}> 
-                                                        
-                                                            {option.name}
-                                                        
-                                                        </a> 
-                                                    
-                                                    </li>
+                                            tab.active?(
                                                 
-                                                )
-                                            )
+                                                <ul id = {`${tab.name}-options`} className="options">
 
-                                            }
+                                                    {
+                                                    
+                                                    tab.options.map(( option,o_key ) => 
+                                                        (
+                                                            
+                                                            <li key = {o_key} className = 'sub-option inactive-sub-option active-sub-option' id = {`${option.name}-option`}> 
+                                                                
+                                                                <a key = {o_key} href = {`${tab.routePrefix}${option.route}`}> 
+                                                                
+                                                                    {option.name}
+                                                                
+                                                                </a> 
+                                                            
+                                                            </li>
+                                                        
+                                                        )
+                                                    )
 
-                                        </ul>
-                                    
-                                    ):(<></>)
+                                                    }
+
+                                                </ul>
+                                            
+                                            ):(<></>)
+                                        
+                                        }
+
+                                    </li>
                                 
-                                }
+                                )
+                            
+                            )
 
-                            </li>
-                        
-                        )
-                    
-                    )
+                        }
 
-                }
+                    </ul>
 
-                </ul>
-            
-            </nav>
-        ):(<></>)
+            </nav>):(<></>)}
+
+            <NavContext.Provider value={[setToggle]}>
+
+                {children}
+
+            </NavContext.Provider>
+        
+        </div>
     )
 }
 

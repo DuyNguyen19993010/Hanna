@@ -1,38 +1,76 @@
 // modules
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 // components
 import SearchBar from "./components/searchBar";
 
 import ItemBox from "./components/itemBox";
 
-import ItemsGrid from "./components/itemsGrid";
+import {ItemsGridMemo} from "./components/itemsGrid";
+
+import SearchBarWrapper from "./components/SearchBarWrapper";
 
 // hooks
 
 import useItemsFetch from "../../hooks/useItemsFetch";
-import useItemDelete from "../../hooks/useItemDelete";
+
+import { ItemContext } from "./context/ItemContext";
+
+import { NavContext } from "../../context/NavContext";
+
+// style
+
+import '../../assets/ui/css/app.css';
+
+const CatalogWrapper = ({children}) => {
+    
+    return (
+    
+        <div className = "page" id = "catalog-wrapper">
+
+            {children}
+        
+        </div>
+    )
+
+}
 
 const Catalog = () => {
 
     const [page,setPage] = useState(1); 
 
-    const {items} = useItemsFetch(page);
+    // fetch items to display
+
+    const {items,setNewItems} = useItemsFetch(page);
+
+    // store info of selected items
+
+    const [item,setItem] = useState(null);
+    
+    const [setToggle] = useContext(NavContext);
 
     return (
-        <div id = "catalog-wrapper">
-
-            <div id = "util-bar-wrapper">
+        <CatalogWrapper>
+                
+            <SearchBarWrapper>
+        
+                <button id = "add-item-button"><i className="fa-solid fa-cake-candles" style={{"color": "#ffffff"}}></i></button>
 
                 <SearchBar/>
+                
+                <i id = "menu-toggle" onClick={()=>{setToggle(true);}} class="fa-solid fa-bars fa-xl" style={{"color": "#000000"}}></i>
 
-                <button id = "add-item-button">Add a new item</button>
+            </SearchBarWrapper>
 
-            </div>
+            <ItemContext.Provider value = {[item,setItem,items,setNewItems]}>
 
-            <ItemsGrid items = {items}/>
+                <ItemsGridMemo items = {items}/>
 
-        </div>
+                <ItemBox/>
+
+            </ItemContext.Provider>
+        
+        </CatalogWrapper>
     )
 }
 

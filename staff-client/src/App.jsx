@@ -9,25 +9,34 @@ import Catalog from "./pages/Catalog";
 
 import Nav from "./components/ui/nav";
 
+import { Loading } from "./components/ui/loading";
+
 function App() {
 
   return (
-
-    <div id="App">
+    <Loading>
       
-      {/* <Nav/> */}
+      <div id="App">
+        
+        <Nav>
 
-      {/* Home page */}
+          {/* Home page */}
 
-      {/* Catalog page */}
-      
-      <Catalog/>
+          {/* Catalog page */}
 
-      {/* Order page */}
+          <Catalog/>
 
-      {/* Sale page */}
+          {/* Order page */}
 
-    </div>
+          {/* Sale page */}
+
+
+        </Nav>
+
+      </div>
+
+    </Loading>
+
   );
 
 }

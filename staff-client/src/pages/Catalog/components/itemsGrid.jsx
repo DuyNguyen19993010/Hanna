@@ -1,11 +1,15 @@
+import {createContext, memo} from 'react';
 // components
 
 import Item from "./item";
+
+export const ItemsContext = createContext();
 
 const ItemsGrid = (props) => {
 
     return (
         <div id = "item-grid">
+            
             {
 
                 props.items.map((item,index)=>{
@@ -13,16 +17,17 @@ const ItemsGrid = (props) => {
                     return (
 
                         <Item item = {item} key = {index}/>
-
+                        
                     )
                 
                 })
 
             }  
+
         </div>
 
     )
 
 }
 
-export default ItemsGrid;
+export const ItemsGridMemo = memo(ItemsGrid);
