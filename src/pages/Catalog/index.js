@@ -60,10 +60,7 @@ const Catalog = () => {
 
     // toggle nav on/off
     
-    const [setToggle] = useContext(NavContext);
-
-    // set loading state
-    const [isPending,setPending] = useContext(PendingContext);
+    const {setToggle} = useContext(NavContext);
 
     return (
         <CatalogWrapper>
@@ -80,7 +77,7 @@ const Catalog = () => {
 
             </SearchBarWrapper>
 
-            <ItemContext.Provider value = {[item,setItem,items,setNewItems]}>
+            <ItemContext.Provider value = {{item,setItem,items,setNewItems}}>
 
                 <ItemsGridMemo items = {items}/>
 

@@ -17,7 +17,7 @@ export const Loading = ({children}) => {
 
         {isPending? (<LoadingSplash/>):(<></>)}
         
-        <PendingContext.Provider value={[isPending,setPending]}>
+        <PendingContext.Provider value={{isPending,setPending}}>
 
             {children}
 

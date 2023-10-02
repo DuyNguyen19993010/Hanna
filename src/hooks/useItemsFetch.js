@@ -10,7 +10,7 @@ const useItemsFetch = (page) => {
 
     const [items, setItems] = useState([]);
     
-    const [isPending,setPending] = useContext(PendingContext)
+    const {setPending} = useContext(PendingContext)
 
     useEffect(()=>{ 
 

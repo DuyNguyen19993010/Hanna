@@ -3,7 +3,7 @@ import { ItemContext } from "../context/ItemContext";
 
 const ItemBox = () => {
     
-    const [item] = useContext(ItemContext);
+    const {item} = useContext(ItemContext);
 
     return (
 

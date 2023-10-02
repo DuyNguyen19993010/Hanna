@@ -12,7 +12,7 @@ const Item = (props) => {
 
     // setter & getter for selected item
 
-    const [item,setItem] = useContext(ItemContext);
+    const {setItem} = useContext(ItemContext);
 
     return(
 

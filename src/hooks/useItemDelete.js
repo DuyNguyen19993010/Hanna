@@ -7,7 +7,7 @@ const useItemDelete = (item_id,callback) => {
     
     const uri = `${process.env.REACT_APP_DELETE_ITEM_PATH}/${item_id}`;
 
-    const [isPending,setPending] = useContext(PendingContext);
+    const {setPending} = useContext(PendingContext);
 
     const deleteReq = () => {
         

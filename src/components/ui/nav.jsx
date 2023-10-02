@@ -99,7 +99,7 @@ const Nav = ({children}) => {
 
             </nav>):(<></>)}
 
-            <NavContext.Provider value={[setToggle]}>
+            <NavContext.Provider value={{setToggle}}>
 
                 {children}
 

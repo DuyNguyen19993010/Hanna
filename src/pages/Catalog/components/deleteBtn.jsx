@@ -5,7 +5,7 @@ import { ItemContext } from "../context/ItemContext";
 
 const DeleteBtn = (props) => {
 
-    const [item,setItem,items,setNewItems] = useContext(ItemContext); 
+    const {items,setNewItems} = useContext(ItemContext); 
 
     const refreshItemList = () => {
         
