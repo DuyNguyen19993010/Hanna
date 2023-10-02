@@ -11,7 +11,7 @@ const DeleteBtn = (props) => {
         
         let cloneList = [...items];
 
-        cloneList = cloneList.filter((valid_item) => valid_item != props.item);
+        cloneList = cloneList.filter((valid_item) => valid_item !== props.item);
 
         setNewItems(cloneList);
 

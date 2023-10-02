@@ -16,7 +16,7 @@ const useItemFetch = (item_id) => {
         }).
         catch((err)=>{
 
-            window.alert('An error has happened');
+            window.alert(`An error has happened:${err}`);
         
         })
         

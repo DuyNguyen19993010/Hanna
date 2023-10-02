@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // context
 
@@ -30,15 +30,6 @@ const ItemForm = (props) =>{
 
         e.preventDefault();
 
-        // TODO: collect all value from input and set states
-        
-        // let form_data = {
-        //     name:name.current.value,
-        //     minQuan:parseInt(minQuan.current.value),
-        //     price:parseInt(price.current.value),
-        //     file:file.current.value
-        // }
-
         let data = new FormData();
 
         data.append('name',name.current.value);
@@ -49,6 +40,12 @@ const ItemForm = (props) =>{
         setFormData(data);
 
     }
+
+    useEffect(() => {
+
+        console.log(status);
+    
+    },[status])
 
     return (
         <form ref = {form}  onSubmit = {(e)=>submit(e)} id = "add-item-form-wrapper">

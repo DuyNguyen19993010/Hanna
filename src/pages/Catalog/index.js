@@ -20,8 +20,6 @@ import { ItemContext } from "./context/ItemContext";
 
 import { NavContext } from "../../context/NavContext";
 
-import { PendingContext } from "../../context/PendingContext";
-
 // style
 
 import '../../assets/ui/css/app.css';
@@ -42,7 +40,7 @@ const CatalogWrapper = ({children}) => {
 const Catalog = () => {
 
     // set page number
-    const [page,setPage] = useState(1); 
+    const [page] = useState(1); 
 
     // fetch items to display
 

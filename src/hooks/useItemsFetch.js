@@ -15,7 +15,9 @@ const useItemsFetch = (page) => {
     useEffect(()=>{ 
 
         if(page!= null){
+            
             setPending(true);
+
             axios.get(uri).then((res)=>{
                     
                 setItems(res.data);
@@ -31,7 +33,7 @@ const useItemsFetch = (page) => {
             })
         }
         
-    },[page]);
+    },[page,setPending,uri]);
 
     const setNewItems = (new_set) => {
 

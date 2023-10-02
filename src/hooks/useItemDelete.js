@@ -17,8 +17,7 @@ const useItemDelete = (item_id,callback) => {
 
             callback();
             
-        }).
-        catch((err)=>{
+        }).catch((err)=>{
 
             window.alert('Delete failed');
 

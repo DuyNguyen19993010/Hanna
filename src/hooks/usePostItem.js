@@ -29,7 +29,7 @@ export const usePostItem = (data) => {
         }
 
     },
-    [data])
+    [data,uri]);
 
     return [status];
 
