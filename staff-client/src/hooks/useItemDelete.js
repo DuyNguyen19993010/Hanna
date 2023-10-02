@@ -11,7 +11,7 @@ const useItemDelete = (item_id,callback) => {
 
     const deleteReq = () => {
         
-        setPending(true)
+        setPending(true);
         
         axios.delete(uri).then((res)=>{
 

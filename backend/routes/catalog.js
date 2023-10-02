@@ -131,8 +131,8 @@ route.get(get_item_uri, async (req,res)=>{
 
 const post_item_uri = '/item_add';
 
-route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
-    
+route.post(post_item_uri, fileHandler.single('img'), async (req,res)=>{
+    console.log(req.file.filename);
     try{
         
         // Insert query
@@ -148,10 +148,17 @@ route.post(post_item_uri, fileHandler.single('image'), async (req,res)=>{
             let qstring = `INSERT INTO catalog (name,minquan,price,img) 
                                         VALUES (
                                         '${req.body.name}',
-                                        ${req.body.minQuan},
-                                        ${req.body.price},
+                                        ${parseInt(req.body.minQuan)},
+                                        ${parseInt(req.body.price)},
                                         '${fpath}') 
                                         RETURNING *`
+
+            // let qstring = `INSERT INTO catalog (name,minquan,price) 
+            // VALUES (
+            // '${req.body.name}',
+            // ${parseInt(req.body.minQuan)},
+            // ${parseInt(req.body.price)}) 
+            // RETURNING *`
 
             dbClient.query(qstring,(err,res)=>{
             

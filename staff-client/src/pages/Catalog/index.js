@@ -10,6 +10,8 @@ import {ItemsGridMemo} from "./components/itemsGrid";
 
 import SearchBarWrapper from "./components/SearchBarWrapper";
 
+import ItemForm from "./form/itemForm";
+
 // hooks
 
 import useItemsFetch from "../../hooks/useItemsFetch";
@@ -17,6 +19,8 @@ import useItemsFetch from "../../hooks/useItemsFetch";
 import { ItemContext } from "./context/ItemContext";
 
 import { NavContext } from "../../context/NavContext";
+
+import { PendingContext } from "../../context/PendingContext";
 
 // style
 
@@ -37,6 +41,7 @@ const CatalogWrapper = ({children}) => {
 
 const Catalog = () => {
 
+    // set page number
     const [page,setPage] = useState(1); 
 
     // fetch items to display
@@ -46,15 +51,28 @@ const Catalog = () => {
     // store info of selected items
 
     const [item,setItem] = useState(null);
+
+    // TODO: toggle item-detail component
+
+    // TODO: toggle add-item-form
+
+    const [itemFormToggle, toggleItemForm] = useState(true);
+
+    // toggle nav on/off
     
     const [setToggle] = useContext(NavContext);
 
+    // set loading state
+    const [isPending,setPending] = useContext(PendingContext);
+
     return (
         <CatalogWrapper>
-                
+
+            {itemFormToggle? (<ItemForm setToggle = {toggleItemForm}/>) : (<></>)}
+
             <SearchBarWrapper>
         
-                <button id = "add-item-button"><i className="fa-solid fa-cake-candles" style={{"color": "#ffffff"}}></i></button>
+                <button onClick={() => toggleItemForm(true)} id = "add-item-button"><i className="fa-solid fa-cake-candles" style={{"color": "#ffffff"}}></i></button>
 
                 <SearchBar/>
                 

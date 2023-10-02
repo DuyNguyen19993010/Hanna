@@ -112,6 +112,7 @@ a:link {
   font-family: "roboto";
   width: 100vw;
   height: 100vh;
+  overflow-y: scroll;
 }
 #App button {
   padding: 5px;
@@ -127,10 +128,27 @@ a:link {
   scale: 1.05;
   transition: 0.2s;
 }
-
-#catalog-wrapper {
-  width: 100vw;
-  height: 100vh;
+#App .cancel-btn {
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border: solid 1px red;
+  border-radius: 5px;
+  font-size: 13.5px;
+}
+#App .cancel-btn:active {
+  background-color: white;
+  color: red;
+  scale: 1.05;
+  transition: 0.2s;
+}
+#App input[type=text] {
+  height: 55%;
+  width: 100%;
+  border: solid #616f77 2px;
+  border-radius: 5px;
+  font-size: 2vh;
+  padding: 4px;
 }
 
 .tab {
@@ -149,13 +167,68 @@ a:link {
   background-color: rgba(20, 20, 20, 0.637);
   width: 100vw;
   height: 100vh;
-  z-index: 0;
+  z-index: 8;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
+#catalog-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+#catalog-wrapper #add-item-form-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 7;
+  background-color: rgba(20, 20, 20, 0.637);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form {
+  background-color: white;
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  border-radius: 5px;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form legend {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5%;
+  font-weight: bolder;
+  color: #415058;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form .input-wrapper {
+  width: 100%;
+  margin-bottom: 8%;
+  font-size: 15px;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form .input-wrapper .input-label {
+  display: block;
+  font-weight: 800;
+  color: #616f77;
+  margin-bottom: 5px;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form .input-wrapper input[type=text] {
+  font-size: 13px;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form #item-form-util-btns {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+#catalog-wrapper #add-item-form-wrapper #add-item-form #item-form-util-btns button {
+  margin-right: 10px;
+}
 #catalog-wrapper #util-bar-wrapper {
   background-color: white;
   width: 100vw;
@@ -170,7 +243,7 @@ a:link {
 #catalog-wrapper #util-bar-wrapper #search-bar {
   height: 55%;
   width: 75%;
-  border: solid black 2px;
+  border: solid #616f77 2px;
   border-radius: 5px;
   font-size: 2vh;
   padding: 4px;
@@ -208,10 +281,9 @@ a:link {
   padding: 0px 3px 0px 3px;
 }
 #catalog-wrapper #item-grid .item .item-util-wrapper .util-btn {
-  height: 50%;
   align-self: center;
   justify-self: center;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 #catalog-wrapper #item-grid .item .item-util-wrapper .edit-btn {
@@ -268,6 +340,8 @@ a:link {
   background-color: white;
   padding: 1px 3px 1px 3px;
   border: solid 2px #1684FC;
+  font-size: 14px;
+  font-weight: 800;
   color: #1684FC;
 }
 #catalog-wrapper #item-grid .item .info-wrapper .item-info .item-detail-btn:active {

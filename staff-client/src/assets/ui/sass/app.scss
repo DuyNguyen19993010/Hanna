@@ -21,6 +21,8 @@
     
     height: $main-height;
 
+    overflow-y: scroll;
+
     button{
 
         padding: map-get($map: $button, $key: padding);
@@ -49,13 +51,47 @@
 
     }
 
-}
+    .cancel-btn{
 
-#catalog-wrapper{
+        padding: map-get($map: $cancel-button, $key: padding);
 
-    width: $main-width;
+        background-color: map-get($map: $cancel-button, $key: background-color);
 
-    height: $main-height;
+        color: map-get($map: $cancel-button, $key: color);
+
+        border: map-get($map: $cancel-button, $key: border);
+
+        border-radius: map-get($map: $cancel-button, $key: border-radius);
+
+        font-size: map-get($map: $cancel-button, $key: font-size);
+
+    }
+
+    .cancel-btn:active{
+
+        background-color: map-get($map: $cancel-button, $key: focused-background-color);
+
+        color: map-get($map: $cancel-button, $key: focused-color);
+
+        scale: 1.05;
+
+        transition: 0.2s;
+
+    }
+
+    input[type='text']{
+        height: map-get($map: $text-input, $key: height);
+
+        width: 100%;
+
+        border: map-get($map: $text-input, $key: bord);
+
+        border-radius: map-get($map: $text-input, $key: border-radius);
+
+        font-size: map-get($map: $text-input, $key: font-size);
+
+        padding: map-get($map: $text-input, $key: padding-left);
+    }
 
 }
 
@@ -85,7 +121,7 @@
 
         height: $loading-wrapper-height;
 
-        z-index: $bottom-layer;
+        z-index: $top-layer;
         
         display: $center-layout-display;
 
@@ -99,7 +135,114 @@
 
 }
 
+
 #catalog-wrapper{
+    
+    width: $main-width;
+
+    height: $main-height;
+
+    #add-item-form-wrapper{
+
+        position:absolute;
+
+        width: $main-width;
+
+        height: $main-height;
+
+        z-index: $top-layer - 1;
+
+        background-color: $loading-wrapper-background;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        #add-item-form{
+
+            background-color: white;
+
+            width: 90%;
+
+            padding: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: start;
+
+            justify-content: start;
+
+            border-radius: 5px;
+            
+            legend{
+            
+                display: inline-block;
+                
+                width: 100%;
+
+                margin-bottom: 5%;
+
+                font-weight: bolder;
+
+                color: $primary;
+
+            }
+            
+            .input-wrapper{
+
+                width: 100%;
+
+                margin-bottom: 8%;
+
+                font-size: 15px;
+
+                .input-label{
+                    
+                    display: block;
+
+                    font-weight: 800;
+
+                    color: $secondary;
+
+                    margin-bottom: 5px;
+                
+                }
+
+                input[type='text']{
+            
+                    font-size: 13px;
+            
+                }
+
+            }
+
+            #item-form-util-btns{
+
+                width: 100%;
+
+                display: flex;
+
+                flex-direction: row;
+
+                justify-content: start;
+
+                button{
+
+                    margin-right: 10px;
+
+                }
+
+            }
+
+        }
+
+    }
 
     #util-bar-wrapper{
         
@@ -123,17 +266,17 @@
 
         #search-bar{
 
-            height: map-get($map: $searh-bar, $key: height);
+            height: map-get($map: $text-input, $key: height);
 
-            width: map-get($map: $searh-bar, $key: width);
+            width: map-get($map: $text-input, $key: width);
 
-            border: map-get($map: $searh-bar, $key: bord);
+            border: map-get($map: $text-input, $key: bord);
 
-            border-radius: map-get($map: $searh-bar, $key: border-radius);
+            border-radius: map-get($map: $text-input, $key: border-radius);
 
-            font-size: map-get($map: $searh-bar, $key: font-size);
+            font-size: map-get($map: $text-input, $key: font-size);
 
-            padding: map-get($map: $searh-bar, $key: padding-left);
+            padding: map-get($map: $text-input, $key: padding-left);
 
         }
 
@@ -199,13 +342,11 @@
 
                 .util-btn{
 
-                    height: 50%;
-
                     align-self: center;
 
                     justify-self: center;
 
-                    font-size: 12px;
+                    font-size: 13px;
 
                     font-weight: 600;
 
@@ -315,6 +456,10 @@
                         padding: 1px 3px 1px 3px;
 
                         border: solid 2px $active-tab;
+
+                        font-size: 14px;
+
+                        font-weight: 800;
 
                         color: $active-tab;
 
