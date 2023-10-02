@@ -195,8 +195,8 @@ a:link {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   border-radius: 5px;
 }
 #catalog-wrapper #add-item-form-wrapper #add-item-form legend {
@@ -224,7 +224,7 @@ a:link {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 #catalog-wrapper #add-item-form-wrapper #add-item-form #item-form-util-btns button {
   margin-right: 10px;
@@ -261,7 +261,7 @@ a:link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
   padding: 30px 10px 0px 10px;
 }
@@ -325,7 +325,7 @@ a:link {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
 }
 #catalog-wrapper #item-grid .item .info-wrapper .item-info .item-name {
