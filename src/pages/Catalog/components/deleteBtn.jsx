@@ -1,11 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import useItemDelete from "../../../hooks/useItemDelete";
 
-// context
-import axios from "axios";
-
 import { ItemContext } from "../context/ItemContext";
-import { PendingContext } from "../../../context/PendingContext";
 
 const DeleteBtn = (props) => {
 

@@ -1,12 +1,9 @@
 import {useState} from "react";
-import axios from "axios";
 
-const SearchBar = (props) => {
-
-    const [keyword, setKW] = useState("");
+const SearchBar = () => {
 
     return(
-        <input onChange = {(e)=>{setKW(e.target.value)}} id = "search-bar" placeholder = "Enter to search for an item">
+        <input id = "search-bar" placeholder = "Enter to search for an item">
             
         </input>
     )
