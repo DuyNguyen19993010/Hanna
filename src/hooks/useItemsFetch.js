@@ -19,15 +19,15 @@ const useItemsFetch = (page) => {
             setPending(true);
 
             axios.get(uri).then((res)=>{
-                    
+                console.log('data');
                 setItems(res.data);
             
             }).catch((err)=>{
-                
+                console.log(err);
                 window.alert(err);
 
             }).finally(()=>{
-
+                console.log('done fetching');
                 setPending(false);
             
             })
