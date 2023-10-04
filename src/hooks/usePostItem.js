@@ -11,8 +11,6 @@ export const usePostItem = (data) => {
 
         if(data){
 
-            console.log([...data]);
-
             axios.post(uri, data,{
                 headers: { "Content-Type": "multipart/form-data" }
             }).then((res)=>{

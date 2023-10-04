@@ -13,8 +13,6 @@ import { Loading } from "./components/ui/loading";
 
 function App() {
 
-  console.log(process.env.REACT_APP_ALL_ITEM_PATH);
-
   return (
     <Loading>
       
