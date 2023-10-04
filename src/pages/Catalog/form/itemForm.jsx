@@ -43,7 +43,7 @@ const ItemForm = (props) =>{
 
     useEffect(() => {
 
-        console.log(status);
+        
     
     },[status])
 
@@ -51,11 +51,11 @@ const ItemForm = (props) =>{
         <form ref = {form}  onSubmit = {(e)=>submit(e)} id = "add-item-form-wrapper">
             <div id = "add-item-form">
                 
-                <legend><h1><i class="fa-solid fa-plus"></i> Add an item</h1></legend>
+                <legend><h1><i className="fa-solid fa-plus"></i> Add an item</h1></legend>
                 
                 <div className="input-wrapper">       
 
-                    <label className="input-label" for = "name"><h3>Name</h3></label>
+                    <label className="input-label" htmlFor = "name"><h3>Name</h3></label>
 
                     <input ref = {name} type = "text" name = "name" placeholder="Please enter a name for the item"></input>
 
@@ -64,7 +64,7 @@ const ItemForm = (props) =>{
 
                 <div className="input-wrapper">
 
-                    <label className="input-label" for = "minQuan"><h3>Minium quantity</h3></label>
+                    <label className="input-label" htmlFor = "minQuan"><h3>Minium quantity</h3></label>
                 
                     <input ref = {minQuan} type = "text" name = "minQuan" placeholder="Minium quantity"></input>
 
@@ -72,7 +72,7 @@ const ItemForm = (props) =>{
 
                 <div className="input-wrapper">
 
-                    <label className="input-label" for = "price"><h3>Price</h3></label>
+                    <label className="input-label" htmlFor = "price"><h3>Price</h3></label>
                 
                     <input ref = {price} type = "text" name = "price" placeholder="Please enter a price"></input>
 
@@ -81,7 +81,7 @@ const ItemForm = (props) =>{
                 
                 <div className="input-wrapper">
 
-                    <label className="input-label" for = "img"><h3>Image profile</h3></label>
+                    <label className="input-label" htmlFor = "img"><h3>Image profile</h3></label>
                 
                     <input multiple="multiple" onChange={(e)=>{setImg(e.target.files[0])}} ref = {file} type = "file" name = "img"></input>
 

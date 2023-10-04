@@ -21,7 +21,7 @@ const DeleteBtn = (props) => {
 
     return (
         
-        <button className="del-btn util-btn" onClick={()=> deleteReq()}><i class="fa-regular fa-trash-can" style={{"color": "#ffffff"}}></i> Delete</button>
+        <button className="del-btn util-btn" onClick={()=> deleteReq()}><i className="fa-regular fa-trash-can" style={{"color": "#ffffff"}}></i> Delete</button>
     
     )
 }

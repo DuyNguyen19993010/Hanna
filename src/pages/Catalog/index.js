@@ -71,7 +71,7 @@ const Catalog = () => {
 
                 <SearchBar/>
                 
-                <i id = "menu-toggle" onClick={()=>{setToggle(true);}} class="fa-solid fa-bars fa-xl" style={{"color": "#000000"}}></i>
+                <i id = "menu-toggle" onClick={()=>{setToggle(true);}} className="fa-solid fa-bars fa-xl" style={{"color": "#000000"}}></i>
 
             </SearchBarWrapper>
 

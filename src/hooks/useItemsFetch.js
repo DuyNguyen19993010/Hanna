@@ -7,7 +7,7 @@ import { PendingContext } from "../context/PendingContext";
 const useItemsFetch = (page) => {
     
     const uri = `${process.env.REACT_APP_ALL_ITEM_PATH}/${page}`;
-
+    
     const [items, setItems] = useState([]);
     
     const {setPending} = useContext(PendingContext)
